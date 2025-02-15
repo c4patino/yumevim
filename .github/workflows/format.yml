@@ -1,4 +1,4 @@
-name: stylua
+name: ci
 
 on:
   push:
@@ -9,27 +9,11 @@ on:
     branches: ["*"]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   format:
-    runs-on: [self-hosted]
-    permissions:
-        contents: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
-      - name: Activate nix-shell
-        uses: nicknovitski/nix-develop@v1.2.0
-        with:
-          arguments: "github:C4theBomb/nixos-config#lua-dev"
-      - name: Format all files
-        run: stylua .
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5.0.1
-        with:
-          commit_message: |
-            Autoformatting with stylua
-
-            [skip ci]
-
+    uses: c4patino/actions/.github/workflows/format.yml@main
+    with:
+      language: lua
