@@ -1,35 +1,32 @@
-require("nvchad.autocmds")
-
-local autocmd = vim.api.nvim_create_autocmd
-
-autocmd({ "TextYankPost" }, {
-	group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank({
-			higroup = "IncSearch",
-			timeout = 40,
-		})
-	end,
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        vim.highlight.on_yank({ higroup = "IncSearch", timeout = 50 })
+    end,
 })
 
-autocmd({ "BufWinEnter" }, {
-	group = vim.api.nvim_create_augroup("Fugitive", {}),
-	callback = function()
-		if vim.bo.ft ~= "fugitive" then
-			return
-		end
-
-		vim.keymap.set("n", "<leader>p", "<cmd>Git pull<CR>", { desc = "Fugitive Git pull" })
-		vim.keymap.set("n", "<leader>P", "<cmd>Git push<CR>", { desc = "Fugitive Git push" })
-	end,
+-- Set 2-space tabs for specific filetypes
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "astro", "javascript", "javascriptreact", "nix", "tex", "typescript", "typescriptreact" },
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.expandtab = true
+    end,
 })
 
-autocmd({ "LspAttach" }, {
-	group = vim.api.nvim_create_augroup("Lsp", {}),
-	callback = function(e)
-		local opts = { buffer = e.buf }
-		vim.keymap.set("n", "K", function()
-			vim.lsp.buf.hover()
-		end, opts)
-	end,
+-- Enable wrap and ZenMode toggle for LaTeX files
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "tex",
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.linebreak = true
+        vim.keymap.set("n", "<leader>zz", function()
+            if require("zen-mode.view").is_open() then
+                require("zen-mode").toggle()
+            else
+                require("zen-mode").toggle({ window = { width = 85 } })
+            end
+        end, { buffer = true, desc = "ZenMode toggle" })
+    end,
 })

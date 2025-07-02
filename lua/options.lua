@@ -1,39 +1,28 @@
-require("nvchad.options")
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-local o = vim.o
-local opt = vim.opt
-local g = vim.g
+vim.opt.number = true
+vim.opt.relativenumber = true
 
-g.mapleader = " "
-g.maplocalleader = " "
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
-opt.nu = true
-opt.relativenumber = true
+vim.opt.wrap = false
 
-o.tabstop = 4
-o.softtabstop = 4
-o.shiftwidth = 4
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = "/home/c4patino/.vim/undodir"
+vim.opt.undofile = true
 
-opt.wrap = false
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
 
-opt.swapfile = false
-opt.backup = false
-opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-opt.undofile = true
+vim.opt.termguicolors = true
 
-opt.hlsearch = false
-opt.incsearch = true
+vim.opt.scrolloff = 8
 
-opt.termguicolors = true
+vim.opt.foldcolumn = "0"
+vim.opt.foldlevel = 99
 
-opt.scrolloff = 8
-opt.isfname:append("@-@")
-
-o.foldcolumn = "0"
-o.foldlevel = 99
-o.foldlevelstart = 99
-o.foldenable = true
-
-g.undotree_WindowLayout = 4
-g.undotree_DiffpanelHeight = 15
-g.undotree_SplitWidth = 40
+vim.opt.signcolumn = "yes"
