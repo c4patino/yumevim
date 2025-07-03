@@ -1,12 +1,12 @@
--- Highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
+local mkAutocmd = vim.api.nvim_create_autocmd
+
+mkAutocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 50 })
 	end,
 })
 
--- Set 2-space tabs for specific filetypes
-vim.api.nvim_create_autocmd("FileType", {
+mkAutocmd("FileType", {
 	pattern = { "astro", "javascript", "javascriptreact", "nix", "tex", "typescript", "typescriptreact" },
 	callback = function()
 		vim.opt_local.tabstop = 2
@@ -15,8 +15,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- Enable wrap and ZenMode toggle for LaTeX files
-vim.api.nvim_create_autocmd("FileType", {
+mkAutocmd("FileType", {
 	pattern = "tex",
 	callback = function()
 		vim.opt_local.wrap = true
