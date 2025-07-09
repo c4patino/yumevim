@@ -26,3 +26,6 @@ vim.opt.foldcolumn = "0"
 vim.opt.foldlevel = 99
 
 vim.opt.signcolumn = "yes"
+
+vim.g.loaded_netrw = 0
+vim.g.loaded_netrwPlugin = 0
