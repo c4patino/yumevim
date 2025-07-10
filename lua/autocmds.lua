@@ -7,7 +7,7 @@ mkAutocmd("TextYankPost", {
 })
 
 mkAutocmd("FileType", {
-	pattern = { "astro", "javascript", "javascriptreact", "nix", "tex", "typescript", "typescriptreact" },
+	pattern = { "astro", "haskell", "javascript", "javascriptreact", "nix", "tex", "typescript", "typescriptreact" },
 	callback = function()
 		vim.opt_local.tabstop = 2
 		vim.opt_local.shiftwidth = 2
