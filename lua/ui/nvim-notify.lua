@@ -1,6 +1,6 @@
 return {
 	"rcarriga/nvim-notify",
-	event = "VeryLazy",
+	lazy = false,
 	keys = {
 		{
 			"<leader>un",
