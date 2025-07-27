@@ -11,6 +11,7 @@ return {
 			end,
 		},
 		{ "nvim-telescope/telescope-ui-select.nvim" },
+		{ "debugloop/telescope-undo.nvim" },
 	},
 	keys = {
 		{
@@ -92,11 +93,19 @@ return {
 				["ui-select"] = {
 					require("telescope.themes").get_dropdown({}),
 				},
+				["undo"] = {
+					use_delta = true,
+					layout_strategy = "vertical",
+					layout_config = {
+						preview_height = 0.8,
+					},
+				},
 			},
 		})
 
 		-- Load extensions
 		pcall(telescope.load_extension("fzf"))
 		pcall(telescope.load_extension("ui-select"))
+		pcall(telescope.load_extension("undo"))
 	end,
 }
