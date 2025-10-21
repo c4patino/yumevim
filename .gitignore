@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/direnv,vim,lua
-# Edit at https://www.toptal.com/developers/gitignore?templates=direnv,vim,lua
+# Created by https://www.toptal.com/developers/gitignore/api/direnv,lua,vim
+# Edit at https://www.toptal.com/developers/gitignore?templates=direnv,lua,vim
 
 ### direnv ###
 .direnv
@@ -69,6 +69,4 @@ tags
 # Persistent undo
 [._]*.un~
 
-# End of https://www.toptal.com/developers/gitignore/api/direnv,vim,lua
-
-.lua/
+# End of https://www.toptal.com/developers/gitignore/api/direnv,lua,vim
